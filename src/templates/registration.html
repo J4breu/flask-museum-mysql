@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}Registration{% endblock %}
+
+{% block customCSS %}
+{% endblock %}
+
+{% block body %}
+<header>
+  <h1>Registration Form</h1>
+  <p>Please fill out this form with the required information</p>
+</header>
+<main>
+  <form action="/registration" method="POST">
+    <div>
+      <label for="first-name">First name:</label>
+      <input type="text" name="first-name" id="first-name" required />
+    </div>
+    <div>
+      <label for="last-name">Last name:</label>
+      <input type="text" name="last-name" id="last-name" required />
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required />
+    </div>
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+    </div>
+    <button type="submit">Sign up</button>
+  </form>
+</main>
+{% endblock %}
