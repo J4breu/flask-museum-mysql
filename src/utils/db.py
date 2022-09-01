@@ -1,7 +1,7 @@
 from decouple import config
 from mysql import connector
 
-def get_connection():
+def getConnection():
   try:
     return connector.connect(
       host = config('MYSQL_HOST'),

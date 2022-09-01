@@ -11,9 +11,9 @@ class User():
     self.password = password
 
   @classmethod
-  def generate_password(self, password):
+  def generatePassword(self, password):
     return generate_password_hash(password)
 
   @classmethod
-  def check_password(self, hashed_password, password):
+  def checkPassword(self, hashed_password, password):
     return check_password_hash(hashed_password, password)

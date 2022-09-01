@@ -1,4 +1,4 @@
-from ..utils.db import get_connection
+from ..utils.db import getConnection
 from ..entities.user import User
 
 class UserModels():
@@ -14,7 +14,7 @@ class UserModels():
           FROM user WHERE email = '{}'
         """.format(user.email)
     try:
-      connection = get_connection()
+      connection = getConnection()
 
       with connection.cursor() as cursor:
         cursor.execute(sql)
@@ -25,13 +25,12 @@ class UserModels():
                       row[2],
                       row[3],
                       row[4],
-                      User.check_password(row[5], user.password))
+                      User.checkPassword(row[5], user.password))
           return user
         return None
     
     except Exception as ex:
       raise Exception(ex)
-
 
   @classmethod
   def registration(self, user):
@@ -47,9 +46,9 @@ class UserModels():
               user.lastName, 
               user.email, 
               user.username, 
-              User.generate_password(user.password))
+              User.generatePassword(user.password))
     try:
-      connection = get_connection()
+      connection = getConnection()
 
       with connection.cursor() as cursor:
         cursor.execute(sql, values)

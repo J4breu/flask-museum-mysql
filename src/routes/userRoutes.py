@@ -1,4 +1,3 @@
-from logging import LoggerAdapter
 from flask import Blueprint, flash, redirect, render_template, request
 
 from ..entities.user import User
@@ -10,8 +9,8 @@ main = Blueprint('userRoutes', __name__)
 def login():
   if request.method == 'POST':
     user = User(0, 0, 0, request.form['email'], 0, request.form['password'])
-    logged_user = UserModels.login(user)
-    if logged_user != None:
+    loggedUser = UserModels.login(user)
+    if loggedUser != None:
       return redirect('/home')
     else:
       flash('User not found...')
@@ -20,8 +19,8 @@ def login():
 @main.route('/registration', methods=['GET', 'POST'])
 def registration():
   if request.method == "POST":
-    firstName = request.form["first-name"]
-    lastName = request.form["last-name"]
+    firstName = request.form["firstName"]
+    lastName = request.form["lastName"]
     email = request.form["email"]
     username = request.form["username"]
     password = request.form["password"]
