@@ -8,7 +8,7 @@ main = Blueprint('userRoutes', __name__)
 @main.route('/login', methods=['GET', 'POST'])
 def login():
   if request.method == 'POST':
-    user = User(0, 0, 0, request.form['email'], 0, request.form['password'])
+    user = User(0, 0, 0, request.form['text'], 0, request.form['password'])
     loggedUser = UserModels.login(user)
     if loggedUser != None:
       return redirect('/home')

@@ -1,38 +1,86 @@
 {% extends "layout.html" %}
 
-{% block title %}Registration{% endblock %}
+{% block title %}Sig up{% endblock %}
 
 {% block customCSS %}
+<link rel="stylesheet" href="../static/css/registration.css">
+<link rel="stylesheet" href="../static/css/form.css">
 {% endblock %}
 
 {% block body %}
 <header>
-  <h1>Registration Form</h1>
-  <p>Please fill out this form with the required information</p>
+  <figure id="logoContainer">
+    <a href="#">
+      <img id="logo" src="../static/img/logo.png" alt="Museum logo">
+    </a>
+    <figcaption>
+      <h1 id="legend"> Sig up to Museum ABA </h1>
+    </figcaption>
+  </figure>
 </header>
+
 <main>
   <form action="/registration" method="POST">
-    <div>
-      <label for="firstName">First name:</label>
-      <input type="text" name="firstName" id="firstName" required />
+    <div class="areaContainer" id="firstNameContainer">
+      <label for="firstName"> First name </label>
+      <input type="text" name="firstName" class="inputField" id="firstName">
+      <p class="inputMessage">The firstname has to be 1 to 12 digits and can only contain letters.</p>
     </div>
-    <div>
-      <label for="last-name">Last name:</label>
-      <input type="text" name="lastName" id="lastName" required />
+
+    <div class="areaContainer" id="lastNameContainer">
+      <label for="lastName"> Last name </label>
+      <input type="text" name="lastName" class="inputField" id="lastName">
+      <p class="inputMessage">The lastname has to be 1 to 12 digits and can only contain letters.</p>
     </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" required />
+
+    <div class="areaContainer" id="emailContainer">
+      <label for="email"> Email </label>
+      <input type="email" name="email" class="inputField" id="email">
+      <p class="inputMessage">The email has a limit of 255 digits and can only contain letters, numbers, points, scripts and underscores.</p>
     </div>
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" required />
+
+    <div class="areaContainer" id="usernameContainer">
+      <label for="username"> Username </label>
+      <input type="text" name="username" class="inputField" id="username">
+      <p class="inputMessage">The username has to be 4 to 16 digits and can only contain numbers, letters and underscore.</p>
     </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" required />
+
+    <div class="areaContainer" id="passwordContainer">
+      <label for="password"> Password </label>
+      <input type="password" name="password" class="inputField" id="password">
+      <p class="inputMessage">The password has to be 4 to 12 digits.</p>
     </div>
-    <button type="submit">Sign up</button>
+
+    <div class="areaContainer" id="repeatPasswordContainer">
+      <label for="repeatPassword"> Repeat password </label>
+      <input type="password" name="repeatPassword" class="inputField" id="repeatPassword">
+      <p class="inputMessage">The passwords must be the same.</p>
+    </div>
+
+    <div class="areaContainer" id="checkContainer">
+      <label for="check">
+        I accept the <a class="link" href="#">terms and conditions</a>.
+        <input type="checkbox"id="check">
+      </label>
+    </div>
+
+    <div class="areaContainer" id="submitContainer">
+      <input type="submit" id="submit" value="Sign up" disabled>
+    </div>
   </form>
+
+  <aside>
+    <p> Already have an account? <a class="link" href="#">Sign in</a>.</p>
+  </aside>
 </main>
+
+<footer>
+  <nav>
+    <li><a class="link" href="#">Privacity</a></li>
+    <li><a class="link" href="#">Security</a></li>
+    <li><a class="link" href="#">Contact</a></li>
+  </nav>
+</footer>
+
+<script src="../static/js/registration.js"></script>
 {% endblock %}
