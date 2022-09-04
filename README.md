@@ -17,3 +17,9 @@ Academic project focused on the management of relational databases through the d
 ### `MYSQL_USER = user`
 ### `MYSQL_PASSWORD = password`
 ### `MYSQL_DB = database`
+
+<hr/>
+
+## Disclaimer
+
+The logo was selected from [LogoMakr](LogoMakr.com/app).
