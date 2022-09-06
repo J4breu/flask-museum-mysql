@@ -88,8 +88,6 @@ document.querySelectorAll('form input').forEach((input) => {
 });
 
 document.querySelector('form').addEventListener('submit', (event) => {
-  document.querySelector('form').reset();
-
   document.querySelectorAll('.correct').forEach((event) => {
     event.classList.remove('correct');
   });
