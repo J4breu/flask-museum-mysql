@@ -22,4 +22,4 @@ Academic project focused on the management of relational databases through the d
 
 ## Disclaimer
 
-The logo was selected from [LogoMakr](LogoMakr.com/app).
+The logo was selected from [LogoMakr](https://logomakr.com/app/).
