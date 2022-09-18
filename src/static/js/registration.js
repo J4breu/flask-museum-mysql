@@ -16,23 +16,23 @@ const Status = {
 
 const validateForm = (event) => {
   switch (event.target.name) {
-    case 'firstName':
-      validateField(Patterns.firstName, event.target, 'firstName');
+    case "firstName":
+      validateField(Patterns.firstName, event.target, "firstName");
       break;
-    case 'lastName':
-      validateField(Patterns.lastName, event.target, 'lastName');
+    case "lastName":
+      validateField(Patterns.lastName, event.target, "lastName");
       break;
-    case 'email':
-      validateField(Patterns.email, event.target, 'email');
+    case "email":
+      validateField(Patterns.email, event.target, "email");
       break;
-    case 'username':
-      validateField(Patterns.username, event.target, 'username');
+    case "username":
+      validateField(Patterns.username, event.target, "username");
       break;
-    case 'password':
-      validateField(Patterns.password, event.target, 'password');
+    case "password":
+      validateField(Patterns.password, event.target, "password");
       validatePassword();
       break;
-    case 'repeatPassword':
+    case "repeatPassword":
       validatePassword();
       break;
   }
@@ -41,32 +41,32 @@ const validateForm = (event) => {
 
 const validateField = (pattern, input, field) => {
   if (pattern.test(input.value)) {
-    document.getElementById(`${field}Container`).classList.remove('incorrect');
-    document.querySelector(`#${field}Container .inputMessage`).classList.remove('showMessage');
-    document.getElementById(`${field}Container`).classList.add('correct');
+    document.getElementById(`${field}Container`).classList.remove("incorrect");
+    document.querySelector(`#${field}Container .inputMessage`).classList.remove("showMessage");
+    document.getElementById(`${field}Container`).classList.add("correct");
     Status[field] = true;
   } else {
-    document.getElementById(`${field}Container`).classList.remove('correct');
-    document.getElementById(`${field}Container`).classList.add('incorrect');
-    document.querySelector(`#${field}Container .inputMessage`).classList.add('showMessage');
+    document.getElementById(`${field}Container`).classList.remove("correct");
+    document.getElementById(`${field}Container`).classList.add("incorrect");
+    document.querySelector(`#${field}Container .inputMessage`).classList.add("showMessage");
     Status[field] = false;
   }
 }
 
 const validatePassword = () => {
-  const password = document.getElementById('password').value;
-  const repeatPassword = document.getElementById('repeatPassword').value;
+  const password = document.getElementById("password").value;
+  const repeatPassword = document.getElementById("repeatPassword").value;
 
   if (password === repeatPassword) {
-    document.getElementById('repeatPasswordContainer').classList.remove('incorrect');
-    document.querySelector('#repeatPasswordContainer .inputMessage').classList.remove('showMessage');
-    document.getElementById('repeatPasswordContainer').classList.add('correct');
-    Status['password'] = true
+    document.getElementById("repeatPasswordContainer").classList.remove("incorrect");
+    document.querySelector("#repeatPasswordContainer .inputMessage").classList.remove("showMessage");
+    document.getElementById("repeatPasswordContainer").classList.add("correct");
+    Status["password"] = true
   } else {
-    document.getElementById('repeatPasswordContainer').classList.remove('correct');
-    document.getElementById('repeatPasswordContainer').classList.add('incorrect');
-    document.querySelector('#repeatPasswordContainer .inputMessage').classList.add('showMessage');
-    Status['password'] = false;
+    document.getElementById("repeatPasswordContainer").classList.remove("correct");
+    document.getElementById("repeatPasswordContainer").classList.add("incorrect");
+    document.querySelector("#repeatPasswordContainer .inputMessage").classList.add("showMessage");
+    Status["password"] = false;
   }
 }
 
@@ -74,22 +74,22 @@ const validateSubmit = () => {
   let validateStatus = false;
   for (let field in Status) { validateStatus += Status[field]; }
 
-  if (validateStatus && document.getElementById('check').checked) {
-    document.querySelector('#submit').disabled = false;
+  if (validateStatus && document.getElementById("check").checked) {
+    document.querySelector("#submit").disabled = false;
   } else {
-    document.querySelector('#submit').disabled = true;
+    document.querySelector("#submit").disabled = true;
   }
 }
 
-document.querySelectorAll('form input').forEach((input) => {
-  input.addEventListener('keyup', validateForm);
-  input.addEventListener('blur', validateForm);
-  input.addEventListener('click', validateSubmit);
+document.querySelectorAll("form input").forEach((input) => {
+  input.addEventListener("keyup", validateForm);
+  input.addEventListener("blur", validateForm);
+  input.addEventListener("click", validateSubmit);
 });
 
-document.querySelector('form').addEventListener('submit', (event) => {
-  document.querySelectorAll('.correct').forEach((event) => {
-    event.classList.remove('correct');
+document.querySelector("form").addEventListener("submit", (event) => {
+  document.querySelectorAll(".correct").forEach((event) => {
+    event.classList.remove("correct");
   });
 
   for (let field in Status) { Status[field] = false; }
