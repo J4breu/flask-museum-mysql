@@ -21,52 +21,93 @@
 
 <main>
   <form action="/registration" method="POST">
-    <div class="areaContainer" id="firstNameContainer">
-      <label for="firstName"> First name </label>
-      <input type="text" name="firstName" class="inputField" id="firstName">
-      <p class="inputMessage">The firstname has to be 1 to 12 digits and can only contain letters.</p>
-    </div>
+    <section id="personalSection">
+      <div class="areaContainer" id="firstNameContainer">
+        <label for="firstName"> First name </label>
+        <input type="text" name="firstName" class="inputField" id="firstName">
+        <p class="inputMessage">The firstname has to be 1 to 12 digits and can only contain letters.</p>
+      </div>
 
-    <div class="areaContainer" id="lastNameContainer">
-      <label for="lastName"> Last name </label>
-      <input type="text" name="lastName" class="inputField" id="lastName">
-      <p class="inputMessage">The lastname has to be 1 to 12 digits and can only contain letters.</p>
-    </div>
+      <div class="areaContainer" id="lastNameContainer">
+        <label for="lastName"> Last name </label>
+        <input type="text" name="lastName" class="inputField" id="lastName">
+        <p class="inputMessage">The lastname has to be 1 to 12 digits and can only contain letters.</p>
+      </div>
 
-    <div class="areaContainer" id="emailContainer">
-      <label for="email"> Email </label>
-      <input type="email" name="email" class="inputField" id="email">
-      <p class="inputMessage">The email has a limit of 255 digits and can only contain letters, numbers, points, scripts and underscores.</p>
-    </div>
+      <div class="areaContainer" id="emailContainer">
+        <label for="email"> Email </label>
+        <input type="email" name="email" class="inputField" id="email">
+        <p class="inputMessage">The email has a limit of 255 digits and can only contain letters, numbers, points, scripts and underscores.</p>
+      </div>
 
-    <div class="areaContainer" id="usernameContainer">
-      <label for="username"> Username </label>
-      <input type="text" name="username" class="inputField" id="username">
-      <p class="inputMessage">The username has to be 4 to 16 digits and can only contain numbers, letters and underscore.</p>
-    </div>
+      <div class="areaContainer" id="usernameContainer">
+        <label for="username"> Username </label>
+        <input type="text" name="username" class="inputField" id="username">
+        <p class="inputMessage">The username has to be 4 to 16 digits and can only contain lowercase letters, numbers and underscore.</p>
+      </div>
 
-    <div class="areaContainer" id="passwordContainer">
-      <label for="password"> Password </label>
-      <input type="password" name="password" class="inputField" id="password">
-      <p class="inputMessage">The password has to be 4 to 12 digits.</p>
-    </div>
+      <div class="areaContainer" id="passwordContainer">
+        <label for="password"> Password </label>
+        <input type="password" name="password" class="inputField" id="password">
+        <p class="inputMessage">The password has to be 4 to 12 digits.</p>
+      </div>
 
-    <div class="areaContainer" id="repeatPasswordContainer">
-      <label for="repeatPassword"> Repeat password </label>
-      <input type="password" name="repeatPassword" class="inputField" id="repeatPassword">
-      <p class="inputMessage">The passwords must be the same.</p>
-    </div>
+      <div class="areaContainer" id="repeatPasswordContainer">
+        <label for="repeatPassword"> Repeat password </label>
+        <input type="password" name="repeatPassword" class="inputField" id="repeatPassword">
+        <p class="inputMessage">The passwords must be the same.</p>
+      </div>
+    </section>
 
-    <div class="areaContainer" id="checkContainer">
-      <label for="check">
-        I accept the <a class="link" href="#">terms and conditions</a>.
-        <input type="checkbox"id="check">
-      </label>
-    </div>
+    <section class="hide" id="paymentSection">
+      <div class="areaContainer" id="cardNumberContainer">
+        <label for="cardNumber"> Card number </label>
+        <input type="text" name="cardNumber" class="inputField" id="cardNumber" autocomplete="off">
+        <p class="inputMessage">The card number must be 12 to 19 digits and can only contain numbers.</p>
+      </div>
+  
+      <div class="areaContainer" id="cardNameContainer">
+        <label for="cardName"> Card name </label>
+        <input type="text" name="cardName" class="inputField" id="cardName" autocomplete="off">
+        <p class="inputMessage">The card name has to be 1 to 20 digits and can only contain capital letters and blanks.</p>
+      </div>
+  
+      <div class="areaContainer" id="expirationContainer">
+        <label for="month"> Expiration </label>
+        <select name="month" id="month">
+          <option disabled selected>Month</option>
+        </select>
+        <select name="year" id="year">
+          <option disabled selected>Year</option>
+        </select>
+        <p class="inputMessage">Select a valid date for month and year.</p>
+      </div>
+  
+      <div class="areaContainer" id="ccvContainer">
+        <label for="ccv"> CCV </label>
+        <input type="text" name="ccv" class="inputField" id="ccv">
+        <p class="inputMessage">The card's security code must be 3 numerical digits</p>
+      </div>
+  
+      <div class="areaContainer" id="paymentContainer">
+        <p> Payment <br><span id="payment">"  10$  "</span></p>
+      </div>
+    </section>
 
-    <div class="areaContainer" id="submitContainer">
-      <input type="submit" id="submit" value="Sign up" disabled>
-    </div>
+    <section id="submitSection">
+      <div class="areaContainer" id="checkContainer">
+        <label for="check">
+          <input type="checkbox"id="check">
+          I accept the <a class="link" href="#">terms and conditions</a>.
+        </label>
+      </div>
+  
+      <div class="areaContainer" id="submitContainer">
+        <input type="submit" id="submit" value="Sign up" disabled>
+        <a class="link" id="next" href="#">Payment &rarr;</a>
+        <a class="link hide" id="back" href="#">&larr; Personal</a>
+      </div>
+    </section>
   </form>
 
   <aside>

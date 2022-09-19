@@ -1,44 +1,72 @@
-main { max-width: 680px; }
+main { max-width: 670px; }
 
-form {
+#personalSection,
+#paymentSection {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-#checkContainer,
-#submitContainer { grid-column: span 2; }
+#personalSection { margin-bottom: 10px; }
 
-#checkContainer { margin-top: -5px; }
+#paymentSection { margin-bottom: 5px; }
 
-#submitContainer { margin: -15px 0 -2px }
+#paymentContainer { grid-column: span 2; }
+
+select { 
+  width: 49%;
+  margin-bottom: 1px;
+}
+
+#payment {
+  width: 100%;
+  font-size: 30px;
+  color: #6D23BB;
+  font-weight: bolder;
+  border-bottom: 1px solid #6D23BB;
+}
+
+#submitContainer { position: relative; }
 
 #submit { width: 35%; }
 
+#next, #back { 
+  position: absolute;
+  bottom: 0;
+}
+
+#next { right: 0; }
+
+#back { left: 0; }
+
 /* Validations */
+.hide { display: none !important; }
+
 .inputMessage { 
   font-size: 11px;
-  margin: 5px 0 -10px;
+  margin: 5px 0 -10px 0;
   color: #F66060;
   display: none;
 }
 
 .correct label { color: #2da44e; }
 
-.correct .inputField { border: 1px solid #2da44e; }
+.correct .inputField,
+.correct select { border: 1px solid #2da44e; }
 
 .incorrect label { color: #cf222e; }
 
-.incorrect .inputField { border: 1px solid #cf222e; }
+.incorrect .inputField,
+.incorrect select { border: 1px solid #cf222e; }
 
 /* Media Queries */
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 670px) {
   main { max-width: 340px; }
 
-  form { grid-template-columns: 1fr; }
+  #personalSection,
+  #paymentSection { grid-template-columns: 1fr; }
 
-  #checkContainer,
-  #submitContainer { grid-column: span 1; }
+  #paymentContainer { grid-column: span 1; }
 
   submit { width: 70%; }
 }
