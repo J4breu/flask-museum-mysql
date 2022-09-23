@@ -13,19 +13,42 @@ def login():
     email = request.form["email"]
     password = request.form["password"]
 
-    user = User(0,
-                0,
-                0, 
+    user = User(None,
+                None,
+                None, 
                 email, 
-                0, 
+                None, 
                 password,
-                0)
+                None)
 
     loggedUser = UserModels.login(user)
     if (loggedUser != None and loggedUser.password):
       return redirect("/home")
-    flash("User not found...")
+    flash("Credentials don't match...")
   return render_template("login.html")
+
+@main.route("/forgotPassword", methods=["GET", "POST"])
+def forgotPassword():
+  if request.method == "POST":
+    email = request.form["email"]
+    password = generatePassword()
+    securityKey = (request.form["key1"] + request.form["key2"] + request.form["key3"])
+
+    user = User(None,
+                None,
+                None, 
+                email, 
+                None, 
+                password,
+                securityKey)
+
+    loggedUser = UserModels.forgotPassword(user)
+    if (loggedUser != None):
+      sendMessage(email, password)
+      flash("Please check your email...")
+      return redirect("/login")
+    flash("Credentials don't match...")
+  return render_template("forgotPassword.html")
 
 @main.route("/registration", methods=["GET", "POST"])
 def registration():
@@ -37,7 +60,7 @@ def registration():
     password = generatePassword()
     securityKey = (request.form["key1"] + request.form["key2"] + request.form["key3"])
 
-    user = User(0,
+    user = User(None,
                 firstName,
                 lastName, 
                 email, 

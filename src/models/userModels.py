@@ -35,6 +35,28 @@ class UserModels():
       raise Exception(ex)
 
   @classmethod
+  def forgotPassword(self, user):
+    sql = "SELECT securityKey FROM user WHERE email = '{}'".format(user.email)
+    try:
+      connection = getConnection()
+
+      with connection.cursor() as cursor:
+        cursor.execute(sql)
+        field = cursor.fetchone()
+
+        sql = "UPDATE user SET password = '{}' WHERE email = '{}'".format(User.generateHash(user.password), user.email)
+
+        if (field != None and User.checkHash(field[0], user.securityKey)):
+          cursor.execute(sql)
+          connection.commit()
+          connection.close()
+          return user
+        return None
+    
+    except Exception as ex:
+      raise Exception(ex)
+
+  @classmethod
   def registration(self, user):
     sql = """
           INSERT INTO user (firstName, 
