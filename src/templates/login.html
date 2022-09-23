@@ -10,7 +10,7 @@
 {% block body %}
 <header>
   <figure id="logoContainer">
-    <a href="#">
+    <a href="/home">
       <img id="logo" src="../static/img/logo.png" alt="Museum logo">
     </a>
     <figcaption>
@@ -21,9 +21,9 @@
 
 <main>
   <form action="/login" method="POST">
-    <div class="areaContainer" id="textContainer">
-      <label for="text"> Email or username </label>
-      <input type="text" name="text" class="inputField" id="text">
+    <div class="areaContainer" id="emailContainer">
+      <label for="email"> Email </label>
+      <input type="email" name="email" class="inputField" id="email">
     </div>
 
     <div class="areaContainer" id="passwordContainer">

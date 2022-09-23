@@ -10,7 +10,7 @@
 {% block body %}
 <header>
   <figure id="logoContainer">
-    <a href="#">
+    <a href="/home">
       <img id="logo" src="../static/img/logo.png" alt="Museum logo">
     </a>
     <figcaption>
@@ -46,16 +46,12 @@
         <p class="inputMessage">The username has to be 4 to 16 digits and can only contain lowercase letters, numbers and underscore.</p>
       </div>
 
-      <div class="areaContainer" id="passwordContainer">
-        <label for="password"> Password </label>
-        <input type="password" name="password" class="inputField" id="password">
-        <p class="inputMessage">The password has to be 4 to 12 digits.</p>
-      </div>
-
-      <div class="areaContainer" id="repeatPasswordContainer">
-        <label for="repeatPassword"> Repeat password </label>
-        <input type="password" name="repeatPassword" class="inputField" id="repeatPassword">
-        <p class="inputMessage">The passwords must be the same.</p>
+      <div class="areaContainer" id="securityKeyContainer">
+        <label for="key1"> Security keys </label>
+        <input type="password" name="key1" class="inputField" id="key1" placeholder="1. Friend of childhood">
+        <input type="password" name="key2" class="inputField" id="key2" placeholder="2. Grandfather's occupation">
+        <input type="password" name="key3" class="inputField" id="key3" placeholder="3. Name of the first pet">
+        <p class="inputMessage">The 3 fields of security must be 1 to 12 digits and can only contain letters.</p>
       </div>
     </section>
 

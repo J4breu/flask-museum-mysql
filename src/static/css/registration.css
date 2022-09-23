@@ -11,7 +11,10 @@ main { max-width: 670px; }
 
 #paymentSection { margin-bottom: 5px; }
 
+#securityKeyContainer,
 #paymentContainer { grid-column: span 2; }
+
+#securityKeyContainer .inputField { width: 32.9%; }
 
 select { 
   width: 49%;
@@ -20,7 +23,7 @@ select {
 
 #payment {
   width: 100%;
-  font-size: 30px;
+  font-size: 29px;
   color: #6D23BB;
   font-weight: bolder;
   border-bottom: 1px solid #6D23BB;

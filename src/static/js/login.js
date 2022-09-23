@@ -1,8 +1,8 @@
 const validateSubmit = () => {
-  const text = document.getElementById("text").value;
+  const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  if (text !== "" && password !== "") {
+  if (email !== "" && password !== "") {
     document.querySelector("#submit").disabled = false;
   } else {
     document.querySelector("#submit").disabled = true;

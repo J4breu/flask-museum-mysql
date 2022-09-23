@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `museum`.`user` (
   `email` VARCHAR(255) NOT NULL,
   `username` VARCHAR(16) NOT NULL,
   `password` VARCHAR(102) NOT NULL,
+  `securityKey` VARCHAR(102) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC))

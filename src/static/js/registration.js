@@ -3,7 +3,7 @@ const Patterns = {
   lastName: /^[a-zA-ZÀ-ÿ]{1,12}$/,
   email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{1,255}$/,
   username: /^[a-z0-9\_\-]{4,16}$/,
-  password: /^.{4,32}$/,
+  securityKey: /^[a-zA-ZÀ-ÿ]{1,12}$/,
   cardNumber: /^[0-9]{12,19}$/,
   cardName: /^[A-ZÀ-Ö\ ]{1,20}$/,
   ccv: /^[0-9]{3}$/
@@ -14,7 +14,7 @@ const Status = {
   lastName: 0,
   email: 0,
   username: 0,
-  password: 0,
+  securityKey: 0,
   cardNumber: 0,
   cardName: 0,
   expiration: 0,
@@ -35,12 +35,14 @@ const validateInput = (event) => {
     case "username":
       validateField(Patterns.username, event.target, "username");
       break;
-    case "password":
-      validateField(Patterns.password, event.target, "password");
-      validatePassword();
+    case "key1":
+      validateSecurity(Patterns.securityKey, "securityKey");
       break;
-    case "repeatPassword":
-      validatePassword();
+    case "key2":
+      validateSecurity(Patterns.securityKey, "securityKey");
+      break;
+    case "key3":
+      validateSecurity(Patterns.securityKey, "securityKey");
       break;
     case "cardNumber":
       validateField(Patterns.cardNumber, event.target, "cardNumber");
@@ -57,10 +59,10 @@ const validateInput = (event) => {
 const validateSelect = (event) => {
   switch (event.target.name) {
     case "month":
-      validateExpiration(event.target, "expiration");
+      validateExpiration("expiration");
       break;
     case "year":
-      validateExpiration(event.target, "expiration");
+      validateExpiration("expiration");
       break;
   }
   validateSubmit();
@@ -80,25 +82,21 @@ const validateField = (pattern, input, field) => {
   }
 }
 
-const validatePassword = () => {
-  const password = document.getElementById("password").value;
-  const repeatPassword = document.getElementById("repeatPassword").value;
-
-  if (password === repeatPassword) {
-    document.getElementById("repeatPasswordContainer").classList.remove("incorrect");
-    document.querySelector("#repeatPasswordContainer .inputMessage").classList.remove("showMessage");
-    document.getElementById("repeatPasswordContainer").classList.add("correct");
-    Status["password"] = 1;
+const validateSecurity = (pattern, field) => {
+  if (pattern.test(key1.value) && pattern.test(key2.value) && pattern.test(key3.value)) {
+    document.getElementById(`${field}Container`).classList.remove("incorrect");
+    document.querySelector(`#${field}Container .inputMessage`).classList.remove("showMessage");
+    document.getElementById(`${field}Container`).classList.add("correct");
+    Status[field] = 1;
   } else {
-    document.getElementById("repeatPasswordContainer").classList.remove("correct");
-    document.getElementById("repeatPasswordContainer").classList.add("incorrect");
-    document.querySelector("#repeatPasswordContainer .inputMessage").classList.add("showMessage");
-    Status["password"] = 0;
+    document.getElementById(`${field}Container`).classList.remove("correct");
+    document.getElementById(`${field}Container`).classList.add("incorrect");
+    document.querySelector(`#${field}Container .inputMessage`).classList.add("showMessage");
+    Status[field] = 0;
   }
 }
 
-const validateExpiration = (select, field) => {
-  console.log(select.value);
+const validateExpiration = (field) => {
   if (month.value !== "Month" && year.value !== "Year") {
     document.getElementById(`${field}Container`).classList.remove("incorrect");
     document.querySelector("#expirationContainer .inputMessage").classList.remove("showMessage");
@@ -150,11 +148,12 @@ document.querySelectorAll("form input").forEach((input) => {
 });
 
 document.querySelectorAll("form select").forEach((select) => {
+  select.addEventListener("keyup", validateSelect);
   select.addEventListener("click", validateSelect);
   select.addEventListener("click", validateSubmit);
 });
 
-document.querySelector("form").addEventListener("submit", (event) => {
+document.querySelector("form").addEventListener("submit", () => {
   document.querySelectorAll(".correct").forEach((event) => {
     event.classList.remove("correct");
   });
