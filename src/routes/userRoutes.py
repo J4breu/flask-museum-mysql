@@ -2,7 +2,6 @@ from flask import Blueprint, flash, redirect, render_template, request
 
 from ..entities.user import User
 from ..models.userModels import UserModels
-from ..utils.password import generatePassword
 from ..utils.mail import sendMessage
 
 main = Blueprint("userRoutes", __name__)
@@ -31,7 +30,7 @@ def login():
 def forgotPassword():
   if request.method == "POST":
     email = request.form["email"]
-    password = generatePassword()
+    password = User.generatePassword()
     securityKey = (request.form["key1"] + request.form["key2"] + request.form["key3"])
 
     user = User(None,
@@ -57,7 +56,7 @@ def registration():
     lastName = request.form["lastName"]
     email = request.form["email"]
     username = request.form["username"]
-    password = generatePassword()
+    password = User.generatePassword()
     securityKey = (request.form["key1"] + request.form["key2"] + request.form["key3"])
 
     user = User(None,
