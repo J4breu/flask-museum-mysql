@@ -13,11 +13,14 @@ body {
 
 #logoContainer { padding-top: 32px; }
 
-#logo {
-  display: block;
-  margin: 0 auto 0;
-  width: 48px;
+#logoContainer div { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -4px;
 }
+
+#logo { width: 52px;}
 
 #legend {
   font-size: 24px;
@@ -126,4 +129,4 @@ footer nav {
 footer .link { padding: 0 5px 0 5px; }
 
 /* Validations */
-.showMessage { display: block; }
+.showMessage { display: block !important; }

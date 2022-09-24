@@ -11,7 +11,7 @@ def sendMessage(to, code):
   msg["To"] = to
 
   message = """
-  <table
+    <table
     style="
       max-width: 600px;
       margin: 0 auto;
@@ -29,7 +29,7 @@ def sendMessage(to, code):
           style="padding: 30px;" align="center" valign="top">
           <div>
             <img
-              style="text-align: center; margin-bottom: 30px"
+              style="text-align: center;"
               src="https://i.postimg.cc/K8Gjx9H5/logo.png"
               alt="Museum logo"
               width="48">
@@ -48,7 +48,7 @@ def sendMessage(to, code):
         </td>
       </tr>
     </tbody>
-  </table>
+    </table>
   """.format(code)
 
   msg.attach(MIMEText(message, "html"))

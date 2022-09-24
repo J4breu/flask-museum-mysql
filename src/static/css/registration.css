@@ -69,7 +69,10 @@ select {
   #personalSection,
   #paymentSection { grid-template-columns: 1fr; }
 
+  #securityKeyContainer,
   #paymentContainer { grid-column: span 1; }
+
+  #securityKeyContainer .inputField { width: 100%; }
 
   submit { width: 70%; }
 }

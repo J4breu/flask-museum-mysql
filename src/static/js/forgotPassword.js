@@ -19,3 +19,11 @@ document.querySelectorAll("form input").forEach((input) => {
 document.querySelector("form").addEventListener("submit", () => {
   validateSubmit();
 });
+
+const warning = document.querySelector("#warningMessage").textContent
+
+if (warning === "") {
+  document.querySelector("#warningMessage").classList.remove("showMessage");
+} else {
+  document.querySelector("#warningMessage").classList.add("showMessage");
+}

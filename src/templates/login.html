@@ -10,9 +10,9 @@
 {% block body %}
 <header>
   <figure id="logoContainer">
-    <a href="/home">
+    <div><a href="/home" title="Home">
       <img id="logo" src="../static/img/logo.png" alt="Museum logo">
-    </a>
+    </div></a>
     <figcaption>
       <h1 id="legend"> Sign in to Museum ABA </h1>
     </figcaption>
@@ -43,6 +43,16 @@
       <input type="submit" id="submit" value="Sign in" disabled>
     </div>
   </form>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div id="warningMessage">
+    <p>{{ message }}</p>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
 
   <aside>
     <p> New in Museum ABA? <a class="link" href="/registration">Sign up</a>.</p>
