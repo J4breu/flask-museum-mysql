@@ -1,18 +1,141 @@
-{% extends "layout.html" %}
+{% extends "base.html" %}
 
 {% block title %}Home{% endblock %}
 
 {% block customCSS %}
+<link rel="stylesheet" href="../static/css/home.css">
 {% endblock %}
 
-{% block body %}
-<header>
-  <h1>Welcome to Museum ABA</h1>
-  <nav>
+{% block main %}
+<div id='hero'>
+  <h1> Museum of Contemporary Art </h1>
+  <p>Art within everyone's reach</p>
+</div>
+
+<nav>
+  <ul>
+    <li><a class="link" href="#">Terms</a></li>
+    <li><a class="link" href="#">Privacity</a></li>
+    <li><a class="link" href="#">Security</a></li>
+    <li><a class="link" href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<section>
+  <form action="#">
+    <label for="option">Filter:</label>
+    <br>
+    <select name="option">
+      <option value="" disabled selected>(select one)</option>
+      <option value="1">Gener</option>
+      <option value="2">Artist</option>
+      <option value="3">Price</option>
+    </select>
+  </form>
+</section>
+
+<section id="gallery">
+  <article>
     <ul>
-      <li><a href="/login">Sign in</a></li>
-      <li><a href="/registration">Sign up</a></li>
+      <li><a href="#"><div class="photo"></div></a></li>
+      <li><a href="#"><strong>Name</strong></a></li>
+      <li><a href="#">Artist</a></li>
+      <br>
+      <li><strong>Price</strong></li>
+      <li><a href="#"><button>INFO</button></a></li>
     </ul>
-  </nav>
-</header>
+  </article>
+
+  <article>
+    <ul>
+      <li><a href="#"><div class="photo"></div></a></li>
+      <li><a href="#"><strong>Name</strong></a></li>
+      <li><a href="#">Artist</a></li>
+      <br>
+      <li><strong>Price</strong></li>
+      <li><a href="#"><button>INFO</button></a></li>
+    </ul>
+  </article>
+
+  <article>
+    <ul>
+      <li><a href="#"><div class="photo"></div></a></li>
+      <li><a href="#"><strong>Name</strong></a></li>
+      <li><a href="#">Artist</a></li>
+      <br>
+      <li><strong>Price</strong></li>
+      <li><a href="#"><button>INFO</button></a></li>
+    </ul>
+  </article>
+
+  <article>
+    <ul>
+      <li><a href="#"><div class="photo"></div></a></li>
+      <li><a href="#"><strong>Name</strong></a></li>
+      <li><a href="#">Artist</a></li>
+      <br>
+      <li><strong>Price</strong></li>
+      <li><a href="#"><button>INFO</button></a></li>
+    </ul>
+  </article>
+
+  <article>
+    <ul>
+      <li><a href="#"><div class="photo"></div></a></li>
+      <li><a href="#"><strong>Name</strong></a></li>
+      <li><a href="#">Artist</a></li>
+      <br>
+      <li><strong>Price</strong></li>
+      <li><a href="#"><button>INFO</button></a></li>
+    </ul>
+  </article>
+
+  <article>
+    <ul>
+      <li><a href="#"><div class="photo"></div></a></li>
+      <li><a href="#"><strong>Name</strong></a></li>
+      <li><a href="#">Artist</a></li>
+      <br>
+      <li><strong>Price</strong></li>
+      <li><a href="#"><button>INFO</button></a></li>
+    </ul>
+  </article>
+
+  <article>
+    <ul>
+      <li><a href="#"><div class="photo"></div></a></li>
+      <li><a href="#"><strong>Name</strong></a></li>
+      <li><a href="#">Artist</a></li>
+      <br>
+      <li><strong>Price</strong></li>
+      <li><a href="#"><button>INFO</button></a></li>
+    </ul>
+  </article>
+
+  <article>
+    <ul>
+      <li><a href="#"><div class="photo"></div></a></li>
+      <li><a href="#"><strong>Name</strong></a></li>
+      <li><a href="#">Artist</a></li>
+      <br>
+      <li><strong>Price</strong></li>
+      <li><a href="#"><button>INFO</button></a></li>
+    </ul>
+  </article>
+
+  <article>
+    <ul>
+      <li><a href="#"><div class="photo"></div></a></li>
+      <li><a href="#"><strong>Name</strong></a></li>
+      <li><a href="#">Artist</a></li>
+      <br>
+      <li><strong>Price</strong></li>
+      <li><a href="#"><button>INFO</button></a></li>
+    </ul>
+  </article>
+  <div id="navigation">
+    <a href="#">&larr;-- Prev</a>
+    <a href="#">Next --&rarr;</a>
+  </div>
+</section>
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block customCSS %}
+{% endblock %}
+
+{% block body %}
+  <header>
+    <ul>
+      <li><a href="/home" title="Home"><img id="logo" src="../static/img/logo.png" alt="Museum logo"></a></li>
+      <li id="legend"><a href="/home" title="Home">Museum ABA</a></li>
+      <li><a href="/login"><button id="signin">Sign in</button></a></li>
+      <li><a href="/registration"><button id="signup">Sign up</button></a></li>
+    </ul>
+  </header>
+
+  <main>
+    {% block main %}
+    {% endblock %}
+  </main>
+  <hr>
+  <footer>
+    <footer>
+      <p> No Copyright - <a href="/home">Museum ABA</a> </p>
+    </footer>
+  </footer>
+  {% endblock %}
