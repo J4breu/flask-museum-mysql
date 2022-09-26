@@ -1,0 +1,16 @@
+body { text-align: center; }
+
+main { padding: 2em 0;}
+
+button {
+  color: #fff;
+  border: 1px solid #A14AFF;
+  background-color: #6D23BB;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px 12px 5px;
+  border-radius: 6px;
+  font-family: inherit;
+  margin-top: 20px;
+}

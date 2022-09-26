@@ -1,7 +1,8 @@
 from flask import Flask, redirect
 
 from .config import settings
-from .routes import homeRoutes, userRoutes
+from .routes import homeRoutes, userRoutes, employeeRoutes
+
 
 def createApp():
   app = Flask(__name__)
@@ -15,6 +16,7 @@ def createApp():
   app.config.from_object(settings["development"])
   app.register_blueprint(homeRoutes.main)
   app.register_blueprint(userRoutes.main)
+  app.register_blueprint(employeeRoutes.main)
   app.register_error_handler(401, status401)
   app.register_error_handler(404, pageNotFound)
 

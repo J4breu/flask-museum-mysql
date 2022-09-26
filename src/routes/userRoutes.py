@@ -22,7 +22,7 @@ def login():
 
     loggedUser = UserModels.login(user)
     if (loggedUser != None and loggedUser.password):
-      return redirect("/home")
+      return redirect("/home/client")
     flash("Credentials don't match...")
   return render_template("login.html")
 

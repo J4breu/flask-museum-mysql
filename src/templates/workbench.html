@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Workbench{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="../static/css/base.css">
+<link rel="stylesheet" href="../static/css/workbench.css">
+{% endblock %}
+
+{% block main %}
+<section>
+  <form action="/workbench" method="POST">
+    <label for="option">
+      {% if option == None %}
+        Filter tables:
+      {% endif %}
+      {% if option != None %}
+        {{ option.capitalize() }} table:
+      {% endif %}
+    </label>
+    <br>
+    <select name="option" onchange="this.form.submit()">
+      <option value="" disabled selected>(select one)</option>
+      <option value="user">User</option>
+      <option value="employee">Employee</option>
+    </select>
+  </form>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <p>{{ message }}</p>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</section>
+
+{% if data != None %}
+<section id="scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>Operations</th>
+        {% for field in legend %}
+        <th>{{ field }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a href="/create/{{ option }}">Create</a>
+        </td>
+      </tr>
+      {% for row in data %}
+      <tr>
+        <td>
+          <a href="/edit/{{ option }}{{ row.0 }}">Edit</a>
+          <a href="/delete/{{ option }}{{ row.0 }}">Delete</a>
+        </td>
+        {% for field in row %}
+        <td>{{ field }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endif %}
+{% endblock%}

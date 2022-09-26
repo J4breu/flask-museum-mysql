@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Workbench{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="../static/css/base.css">
+<link rel="stylesheet" href="../static/css/create.css">
+{% endblock %}
+
+{% block main %}
+<form action="/create/{{ option }}" method="POST">
+  {% if option == "user" %}
+  <h1>Create user</h1>
+  <label for="firstName"> First name </label>
+  <div>
+    <input type="text" name="firstName" required>
+  </div>
+
+  <label for="lastName"> Last name </label>
+  <div>
+    <input type="text" name="lastName" required>
+  </div>
+
+  <label for="email"> Email </label>
+  <div>
+    <input type="email" name="email" required>
+  </div>
+
+  <label for="username"> Username </label>
+  <div>
+    <input type="text" name="username" required>
+  </div>
+
+  <label for="password"> Password </label>
+  <div>
+    <input type="password" name="password" required>
+  </div>
+
+  <label for="key1"> Security keys </label>
+  <div>
+    <input type="password" name="key1" placeholder="1. Friend of childhood" required>
+    <input type="password" name="key2" placeholder="2. Grandfather's occupation" required>
+    <input type="password" name="key3" placeholder="3. Name of the first pet" required>
+  </div>
+  {% endif %}
+
+  {% if option == "employee" %}
+  <h1>Create employee</h1>
+  <label for="userId"> User id </label>
+  <div>
+    <input type="number" name="userId" required>
+  </div>
+
+  <label for="status"> Status </label>
+  <div>
+    <select name="status">
+      <option value="" disabled selected>(select one)</option>
+      <option value="master">Master</option>
+      <option value="normal">Normal</option>
+    </select>
+  </div>
+  {% endif %}
+
+  <button>Submit</button>
+</form>
+{% endblock%}

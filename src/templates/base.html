@@ -8,10 +8,16 @@
 {% block body %}
   <header>
     <ul>
-      <li><a href="/home" title="Home"><img id="logo" src="../static/img/logo.png" alt="Museum logo"></a></li>
-      <li id="legend"><a href="/home" title="Home">Museum ABA</a></li>
+      <li><a href="/home/{{ data }}" title="Home"><img id="logo" src="../static/img/logo.png" alt="Museum logo"></a></li>
+      <li id="legend"><a href="/home/{{ data }}" title="Home">Museum ABA</a></li>
+
+      {% if data == "visitor" %}
       <li><a href="/login"><button id="signin">Sign in</button></a></li>
       <li><a href="/registration"><button id="signup">Sign up</button></a></li>
+      {% endif %}
+      {% if data == "employee" %}
+      <li><a href="/workbench"><button id="signup">Workbench</button></a></li>
+      {% endif %}
     </ul>
   </header>
 

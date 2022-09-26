@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `museum`.`employee` (
   CONSTRAINT `fk_employee_user`
     FOREIGN KEY (`userId`)
     REFERENCES `museum`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
