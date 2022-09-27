@@ -9,8 +9,10 @@ class EmployeeModels():
 
       if option == "user":
         sql = "SELECT * FROM user"
-      else:
+      if option == "employee":
         sql = "SELECT * FROM employee"
+      if option == "art":
+        sql = "SELECT * FROM art"
 
       with connection.cursor() as cursor:
         cursor.execute(sql)

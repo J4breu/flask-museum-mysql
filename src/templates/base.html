@@ -15,6 +15,9 @@
       <li><a href="/login"><button id="signin">Sign in</button></a></li>
       <li><a href="/registration"><button id="signup">Sign up</button></a></li>
       {% endif %}
+      {% if data == "client" %}
+      <li><a href="/addArt"><button id="signup">Add art</button></a></li>
+      {% endif %}
       {% if data == "employee" %}
       <li><a href="/workbench"><button id="signup">Workbench</button></a></li>
       {% endif %}

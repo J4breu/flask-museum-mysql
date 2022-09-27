@@ -46,6 +46,19 @@ CREATE TABLE IF NOT EXISTS `museum`.`employee` (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
+-- -----------------------------------------------------
+-- Table `museum`.`art`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `museum`.`art` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(12) NOT NULL,
+	`imageLink` VARCHAR(20) NOT NULL,
+  `gender` VARCHAR(12) NOT NULL,
+  `author` VARCHAR(255) NOT NULL,
+  `price` VARCHAR(16) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `tittle_UNIQUE` (`title` ASC));
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

@@ -1,7 +1,8 @@
 from flask import Blueprint, flash, redirect, render_template, request
 
-from ..entities.user import User
+from ..entities.art import Art
 from ..entities.employee import Employee
+from ..entities.user import User
 from ..models.employeeModels import EmployeeModels
 
 main = Blueprint("employeeRoutes", __name__)
@@ -19,15 +20,23 @@ def workbench():
                 "Username",
                 "Password",
                 "Security key"]
-    else:
+
+    if option == "employee":
       legend = ["User id", "Status"]
+
+    if option == "art":
+      legend = ["Id",
+                "Title",
+                "Image link",
+                "Autor",
+                "Price"]
 
     data = EmployeeModels.workbench(option)
     return render_template("workbench.html", legend = legend, data = data, option = option)
   return render_template("workbench.html", option = None, data = None)
 
-@main.route("/create/<option>/<id>", methods=["GET", "POST"])
-def create(option, id):
+@main.route("/create/<option>", methods=["GET", "POST"])
+def create(option):
   if request.method == "POST":
 
     if option == "user":
@@ -44,6 +53,13 @@ def create(option, id):
       legend = Employee(
         request.form["userId"],
         request.form["status"])
+
+    if option == "art":
+      legend = Art(
+        request.form["title"],
+        request.form["imageLink"],
+        request.form["gender"],
+      )
 
     EmployeeModels.create(option, legend)
     flash(f"{option.capitalize()} successfully created.")  
@@ -68,6 +84,14 @@ def edit(option, id):
       legend = Employee(
         request.form["userId"],
         request.form["status"])
+
+    if option == "art":
+      legend = Art(
+        request.form["id"],
+        request.form["title"],
+        request.form["imageLink"],
+        request.form["gender"],
+      )
 
     EmployeeModels.edit(option, legend, id)
     flash(f"{option.capitalize()} {id} successfully edited.")  

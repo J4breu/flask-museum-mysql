@@ -11,7 +11,7 @@
 {% block main %}
 <form action="/edit/{{ option }}{{ id }}" method="POST">
   {% if option == "user" %}
-  <h1>Create user</h1>
+  <h1>Edit user</h1>
   <label for="id"> Id </label>
   <div>
     <input type="number" name="id" required>
@@ -51,7 +51,7 @@
   {% endif %}
 
   {% if option == "employee" %}
-  <h1>Create employee</h1>
+  <h1>Edit employee</h1>
   <label for="userId"> User id </label>
   <div>
     <input type="number" name="userId" required>
@@ -64,6 +64,61 @@
       <option value="master">Master</option>
       <option value="normal">Normal</option>
     </select>
+  </div>
+  {% endif %}
+
+  {% if option == "art" %}
+  <h1>Edit art</h1>
+  <label for="id"> Id </label>
+  <div>
+    <input type="number" name="id" required>
+  </div>
+
+  <label for="title"> Title </label>
+  <div>
+    <input type="text" name="title" required>
+  </div>
+
+  <label for="imageLink"> Image link </label>
+  <div>
+    <input type="text" name="imageLink" required>
+  </div>
+
+  <label for="gender"> Gender </label>
+  <div>
+    <select name="gender" required>
+      <option value="" disabled selected>(select one)</option>
+      <option value="ceramic">Ceramic</option>
+      <option value="sculpture">Sculpture</option>
+      <option value="fotography">Fotography</option>
+      <option value="goldsmith">Goldsmith</option>
+      <option value="picture">Picture</option>
+    </select>
+  </div>
+
+  <label for="status"> Status </label>
+  <div>
+    <select name="status" required>
+      <option value="" disabled selected>(select one)</option>
+      <option value="free">Ceramic</option>
+      <option value="pushased">Sculpture</option>
+      <option value="waiting">Fotography</option>
+    </select>
+  </div>
+
+  <label for="autor"> Autor </label>
+  <div>
+    <input type="text" name="autor" required>
+  </div>
+
+  <label for="price"> Price </label>
+  <div>
+    <input type="number" name="number" min="1" max="999" required>
+  </div>
+
+  <label for="comision"> Commision </label>
+  <div>
+    <input type="number" name="commision" min="5" max="15" required>
   </div>
   {% endif %}
 
