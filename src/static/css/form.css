@@ -130,3 +130,13 @@ footer .link { padding: 0 5px 0 5px; }
 
 /* Validations */
 .showMessage { display: block !important; }
+
+#warningMessage {
+	height: 45px;
+	line-height: 45px;
+	background: #F66060;
+	padding: 0 15px;
+	border-radius: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+}

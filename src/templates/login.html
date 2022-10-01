@@ -4,21 +4,13 @@
 
 {% block customCSS %}
 <link rel="stylesheet" href="../static/css/login.css">
-<link rel="stylesheet" href="../static/css/form.css">
 {% endblock %}
 
-{% block body %}
-<header>
-  <figure id="logoContainer">
-    <div><a href="/home" title="Home">
-      <img id="logo" src="../static/img/logo.png" alt="Museum logo">
-    </div></a>
-    <figcaption>
-      <h1 id="legend"> Sign in to Museum ABA </h1>
-    </figcaption>
-  </figure>
-</header>
+{% block figcaption %}Sign in to Museum ABA{% endblock %}
 
+{% block footer %}<li><a class="link" href="#">Terms</a></li>{% endblock %}
+
+{% block body %}
 <main>
   <form action="/login" method="POST">
     <div class="areaContainer" id="emailContainer">
@@ -44,29 +36,10 @@
     </div>
   </form>
 
-  {% with messages = get_flashed_messages() %}
-  {% if messages %}
-  {% for message in messages %}
-  <div id="warningMessage">
-    <p>{{ message }}</p>
-  </div>
-  {% endfor %}
-  {% endif %}
-  {% endwith %}
-
   <aside>
     <p> New in Museum ABA? <a class="link" href="/registration">Sign up</a>.</p>
   </aside>
 </main>
-
-<footer>
-  <nav>
-    <li><a class="link" href="#">Terms</a></li>
-    <li><a class="link" href="#">Privacity</a></li>
-    <li><a class="link" href="#">Security</a></li>
-    <li><a class="link" href="#">Contact</a></li>
-  </nav>
-</footer>
 
 <script src="../static/js/login.js"></script>
 {% endblock %}

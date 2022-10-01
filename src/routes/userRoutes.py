@@ -13,13 +13,7 @@ def login():
     email = request.form["email"]
     password = request.form["password"]
 
-    user = User(None,
-                None,
-                None, 
-                email, 
-                None, 
-                password,
-                None)
+    user = User(None, None, None, email, None, password, None)
 
     loggedUser = UserModels.login(user)
     if (loggedUser != None and loggedUser.password):
@@ -34,13 +28,7 @@ def forgotPassword():
     password = generatePassword()
     securityKey = (request.form["key1"] + request.form["key2"] + request.form["key3"])
 
-    user = User(None,
-                None,
-                None, 
-                email, 
-                None, 
-                password,
-                securityKey)
+    user = User(None, None, None, email, None, password, securityKey)
 
     loggedUser = UserModels.forgotPassword(user)
     if (loggedUser != None):
@@ -60,13 +48,11 @@ def registration():
     password = generatePassword()
     securityKey = (request.form["key1"] + request.form["key2"] + request.form["key3"])
 
-    user = User(None,
-                firstName,
-                lastName, 
-                email, 
-                username, 
-                password,
-                securityKey)
+    if (UserModels.search("email", email) or UserModels.search("username", username)):
+      flash("Duplicate credentials (email or username)")
+      return redirect("/registration")
+
+    user = User(None, firstName, lastName, email, username, password, securityKey)
 
     UserModels.registration(user)
     sendMessage(email, password)
