@@ -13,8 +13,6 @@
 {% block body %}
 <main>
   <form action="/login" method="POST">
-    
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
     <div class="areaContainer" id="emailContainer">
       <label for="email"> Email </label>

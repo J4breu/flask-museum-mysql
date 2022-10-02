@@ -1,6 +1,5 @@
 from flask import Flask, redirect, render_template
 from flask_login import LoginManager
-from flask_wtf.csrf import CSRFProtect
 
 from .config import settings
 from .routes import homeRoutes, userRoutes
@@ -11,9 +10,6 @@ def createApp():
   loginManager = LoginManager()
   loginManager.login_view = "userRoutes.login"
   loginManager.init_app(app)
-
-  csrf = CSRFProtect()
-  csrf.init_app(app)
 
   from .models.userModels import UserModels
 
