@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, render_template
 
-main = Blueprint("homeRoutes", __name__)
+main = Blueprint("visitorRoutes", __name__)
 
 @main.route('/')
 def index():

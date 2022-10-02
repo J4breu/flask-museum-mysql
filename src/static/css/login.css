@@ -1,3 +1,4 @@
+#warningMessage,
 main { max-width: 340px; }
 
 #passwordContainer { position: relative; }
@@ -15,15 +16,3 @@ main { max-width: 340px; }
 #securityKeyContainer .inputField { margin-bottom: 0; }
 
 #submit { width: 70%; }
-
-/* Validations */
-#warningMessage {
-	height: 45px;
-	line-height: 45px;
-	background: #F66060;
-	padding: 0 15px;
-	border-radius: 5px;
-  text-align: center;
-  margin-bottom: 15px;
-  display: none;
-}

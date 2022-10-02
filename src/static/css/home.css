@@ -1,8 +1,8 @@
-main { text-align: center; }
+main { padding: 0; }
 
 #hero {
   color: #fff;
-  padding: 7em 0;
+  padding: 7em 10px;
   background-color: #888F95;
 }
 

@@ -3,7 +3,6 @@
 {% block title %}Home{% endblock %}
 
 {% block customCSS %}
-<link rel="stylesheet" href="../static/css/base.css">
 <link rel="stylesheet" href="../static/css/home.css">
 {% endblock %}
 
@@ -36,6 +35,7 @@
 </section>
 
 <section id="gallery">
+  {% for i in range(10) %}
   <article>
     <ul>
       <li><a href="#"><div class="photo"></div></a></li>
@@ -46,94 +46,8 @@
       <li><a href="#"><button>INFO</button></a></li>
     </ul>
   </article>
+  {% endfor %}
 
-  <article>
-    <ul>
-      <li><a href="#"><div class="photo"></div></a></li>
-      <li><a href="#"><strong>Name</strong></a></li>
-      <li><a href="#">Artist</a></li>
-      <br>
-      <li><strong>Price</strong></li>
-      <li><a href="#"><button>INFO</button></a></li>
-    </ul>
-  </article>
-
-  <article>
-    <ul>
-      <li><a href="#"><div class="photo"></div></a></li>
-      <li><a href="#"><strong>Name</strong></a></li>
-      <li><a href="#">Artist</a></li>
-      <br>
-      <li><strong>Price</strong></li>
-      <li><a href="#"><button>INFO</button></a></li>
-    </ul>
-  </article>
-
-  <article>
-    <ul>
-      <li><a href="#"><div class="photo"></div></a></li>
-      <li><a href="#"><strong>Name</strong></a></li>
-      <li><a href="#">Artist</a></li>
-      <br>
-      <li><strong>Price</strong></li>
-      <li><a href="#"><button>INFO</button></a></li>
-    </ul>
-  </article>
-
-  <article>
-    <ul>
-      <li><a href="#"><div class="photo"></div></a></li>
-      <li><a href="#"><strong>Name</strong></a></li>
-      <li><a href="#">Artist</a></li>
-      <br>
-      <li><strong>Price</strong></li>
-      <li><a href="#"><button>INFO</button></a></li>
-    </ul>
-  </article>
-
-  <article>
-    <ul>
-      <li><a href="#"><div class="photo"></div></a></li>
-      <li><a href="#"><strong>Name</strong></a></li>
-      <li><a href="#">Artist</a></li>
-      <br>
-      <li><strong>Price</strong></li>
-      <li><a href="#"><button>INFO</button></a></li>
-    </ul>
-  </article>
-
-  <article>
-    <ul>
-      <li><a href="#"><div class="photo"></div></a></li>
-      <li><a href="#"><strong>Name</strong></a></li>
-      <li><a href="#">Artist</a></li>
-      <br>
-      <li><strong>Price</strong></li>
-      <li><a href="#"><button>INFO</button></a></li>
-    </ul>
-  </article>
-
-  <article>
-    <ul>
-      <li><a href="#"><div class="photo"></div></a></li>
-      <li><a href="#"><strong>Name</strong></a></li>
-      <li><a href="#">Artist</a></li>
-      <br>
-      <li><strong>Price</strong></li>
-      <li><a href="#"><button>INFO</button></a></li>
-    </ul>
-  </article>
-
-  <article>
-    <ul>
-      <li><a href="#"><div class="photo"></div></a></li>
-      <li><a href="#"><strong>Name</strong></a></li>
-      <li><a href="#">Artist</a></li>
-      <br>
-      <li><strong>Price</strong></li>
-      <li><a href="#"><button>INFO</button></a></li>
-    </ul>
-  </article>
   <div id="navigation">
     <a href="#">&larr;-- Prev</a>
     <a href="#">Next --&rarr;</a>

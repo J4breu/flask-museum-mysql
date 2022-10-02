@@ -10,6 +10,11 @@ body {
   background-color: #E5E5E5;
 }
 
+main { 
+  text-align: center;
+  padding: 2em 120px;
+}
+
 header { background-color: #414141; }
 
 header ul {
@@ -54,9 +59,9 @@ header button {
   font-weight: 300;
 }
 
-#signup { right: 10px; }
+#right { right: 10px; }
 
-#signin { right: 135px; }
+#left { right: 135px; }
 
 footer {
   background-color: #E5E5E5;
