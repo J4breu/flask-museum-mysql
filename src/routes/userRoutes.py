@@ -10,11 +10,8 @@ main = Blueprint("userRoutes", __name__)
 @main.route("/login", methods=["GET", "POST"])
 def login():
   if request.method == "POST":
-    email = request.form["email"]
-    password = request.form["password"]
+    user = User(None, None, None, request.form["email"], None, request.form["password"], None)
     remember = True if request.form.get("remember") else False
-
-    user = User(None, None, None, email, None, password, None)
 
     loggedUser = UserModels.login(user)
     if (loggedUser != None and loggedUser.password):
@@ -32,15 +29,19 @@ def logout():
 @main.route("/forgotPassword", methods=["GET", "POST"])
 def forgotPassword():
   if request.method == "POST":
-    email = request.form["email"]
-    password = User.generatePassword()
-    securityKey = (request.form["key1"] + request.form["key2"] + request.form["key3"])
-
-    user = User(None, None, None, email, None, password, securityKey)
+    user = User(
+      None,
+      None,
+      None,
+      request.form["email"],
+      None,
+      User.generatePassword(),
+      (request.form["key1"] + request.form["key2"] + request.form["key3"])
+    )
 
     loggedUser = UserModels.forgotPassword(user)
     if (loggedUser != None):
-      sendMessage(email, password)
+      sendMessage(user.email, user.password)
       flash("Please check your email...")
       return redirect("/login")
     flash("Credentials don't match...")
@@ -49,21 +50,22 @@ def forgotPassword():
 @main.route("/registration", methods=["GET", "POST"])
 def registration():
   if request.method == "POST":
-    firstName = request.form["firstName"]
-    lastName = request.form["lastName"]
-    email = request.form["email"]
-    username = request.form["username"]
-    password = User.generatePassword()
-    securityKey = (request.form["key1"] + request.form["key2"] + request.form["key3"])
+    user = User(
+      None,
+      request.form["firstName"],
+      request.form["lastName"],
+      request.form["email"],
+      request.form["username"],
+      User.generatePassword(),
+      (request.form["key1"] + request.form["key2"] + request.form["key3"])
+    )
 
-    if (UserModels.search("email", email) or UserModels.search("username", username)):
+    if (UserModels.search("email", user.email) or UserModels.search("username", user.username)):
       flash("Duplicate credentials (email or username)")
       return redirect("/registration")
 
-    user = User(None, firstName, lastName, email, username, password, securityKey)
-
     UserModels.registration(user)
-    sendMessage(email, password)
+    sendMessage(user.email, user.password)
     flash("Please check your email...")
     return redirect("/login")
   return render_template("registration.html")
