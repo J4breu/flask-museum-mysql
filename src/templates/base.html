@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}{% endblock %}</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/img/logo.svg') }}">
+  <title>{% block title %}{% endblock %} · Museum ABA</title>
   <link rel="stylesheet" href="../static/css/base.css">
   {% block customCSS %}
   {% endblock %}
@@ -15,13 +16,16 @@
     <ul>
       <li><a href="/home" title="Home"><img id="logo" src="../static/img/logo.png" alt="Museum logo"></a></li>
       <li id="legend"><a href="/home" title="Home">Museum ABA</a></li>
-
       {% if not current_user.is_authenticated %}
       <li><a href="/login"><button id="left">Sign in</button></a></li>
       <li><a href="/registration"><button id="right">Sign up</button></a></li>
       {% endif %}
-      {% if current_user.is_authenticated %}
+      {% if current_user.status == None %}
       <li><a href="/profile"><button id="left">Profile</button></a></li>
+      <li><a href="/logout"><button id="right">Logout</button></a></li>
+      {% endif %}
+      {% if current_user.status == "master" or current_user.status == "normal"%}
+      <li><a href="/workbench"><button id="left">Workbench</button></a></li>
       <li><a href="/logout"><button id="right">Logout</button></a></li>
       {% endif %}
     </ul>

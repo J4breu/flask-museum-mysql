@@ -4,8 +4,8 @@ main = Blueprint("visitorRoutes", __name__)
 
 @main.route('/')
 def index():
-  return redirect("/home/visitor")
+  return redirect("/home")
 
-@main.route("/home/<type>")
-def home(type):
-  return render_template("home.html", data = type)
+@main.route("/home")
+def home():
+  return render_template("home.html")

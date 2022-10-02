@@ -1,11 +1,4 @@
-main { text-align: center; }
-
-main { 
-  background-color: #E5E5E5;
-  padding: 0 120px;
-}
-
-form { margin: 20px 0 2em 0;}
+form { margin-bottom: 2em; }
 
 form label {
   font-size: 35px;
@@ -38,9 +31,7 @@ table {
   width: 100%;
 }
 
-#scroll, td, th {
-  border: 1px solid #fff;
-}
+#scroll, td, th { border: 1px solid #fff; }
 
 th {
   background-color: #6D23BB;
@@ -52,14 +43,12 @@ th, td {
   padding: 8px;
 }
 
-tr:hover {background-color: #f2f2f2;}
+tr:hover { background-color: #f2f2f2; }
+
 table a {
   color: #0969da;
   text-decoration: none;
   cursor: pointer;
 }
 
-hr { margin-top: 3.5em; }
-
-footer a:hover,
 table a:hover { text-decoration: underline; }

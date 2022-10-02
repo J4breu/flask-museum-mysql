@@ -110,12 +110,10 @@ button:hover { opacity: 0.9; }
 
 nav a:hover,
 article a:hover,
-#navigation a:hover,
-footer a:hover { text-decoration: underline; }
+#navigation a:hover { text-decoration: underline; }
 
 @media screen and (max-width: 1000px) {
   nav { height: 80px; }
-
   nav li {
     width: 50%;
     border-top: 1px solid #E5E5E5;

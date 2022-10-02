@@ -1,7 +1,7 @@
 #warningMessage,
 main { max-width: 340px; }
 
-#passwordContainer { position: relative; }
+#passwordContainer { position:relative; }
 
 #passwordContainer a {
   position: absolute;

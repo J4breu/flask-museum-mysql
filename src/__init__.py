@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template
 from flask_login import LoginManager
 
 from .config import settings
-from .routes import userRoutes, visitorRoutes
+from .routes import visitorRoutes, userRoutes, employeeRoutes
 
 def createApp():
   app = Flask(__name__)
@@ -11,11 +11,11 @@ def createApp():
   loginManager.login_view = "userRoutes.login"
   loginManager.init_app(app)
 
-  from .models.userModels import UserModels
+  from .models.employeeModels import EmployeeModels
 
   @loginManager.user_loader
   def load_user(userId):
-    return UserModels.getById(userId)
+    return EmployeeModels.getById(userId)
 
   def status401(error):
     return redirect("/login")

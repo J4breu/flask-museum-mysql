@@ -4,7 +4,7 @@ from ..entities.user import User
 class UserModels():
   @classmethod
   def login(self, user):
-    sql = "SELECT * FROM user WHERE email = '{}'".format(user.email)
+    sql = f"SELECT * FROM user WHERE email = '{user.email}'"
     try:
       connection = getConnection()
 
@@ -21,7 +21,7 @@ class UserModels():
 
   @classmethod
   def forgotPassword(self, user):
-    sql = "SELECT securityKey FROM user WHERE email = '{}'".format(user.email)
+    sql = f"SELECT securityKey FROM user WHERE email = '{user.email}'"
     try:
       connection = getConnection()
 
@@ -39,22 +39,6 @@ class UserModels():
           connection.commit()
           connection.close()
           return user
-        return None
-    
-    except Exception as ex:
-      raise Exception(ex)
-
-  @classmethod
-  def getById(self, id):
-    sql = "SELECT * FROM user WHERE id = '{}'".format(id)
-    try:
-      connection = getConnection()
-
-      with connection.cursor() as cursor:
-        cursor.execute(sql)
-        row = cursor.fetchone()
-        if (row != None):
-          return User(row[0], row[1], row[2], row[3], row[4], None, None)
         return None
     
     except Exception as ex:
@@ -88,9 +72,9 @@ class UserModels():
   @classmethod
   def search(self, option, value):
     if (option == "email"):
-      sql = "SELECT * FROM user WHERE email = '{}'".format(value)
+      sql = f"SELECT * FROM user WHERE email = '{value}'"
     if (option == "username"):
-      sql = "SELECT * FROM user WHERE username = '{}'".format(value)
+      sql = f"SELECT * FROM user WHERE username = '{value}'"
     try:
       connection = getConnection()
 

@@ -1,40 +1,38 @@
 {% extends "base.html" %}
 
-{% block title %}Workbench{% endblock %}
+{% block title %}Edit {{ option }}{% endblock %}
 
 {% block customCSS %}
-<link rel="stylesheet" href="../static/css/base.css">
-<link rel="stylesheet" href="../static/css/create.css">
-<link rel="stylesheet" href="../static/">
+<link rel="stylesheet" href="../static/css/operations.css">
 {% endblock %}
 
 {% block main %}
-<form action="/edit/{{ option }}{{ id }}" method="POST">
+<h1>Edit {{ option }}</h1>
+<form action="/edit/{{ option }}{{ data.0 }}" method="POST">
   {% if option == "user" %}
-  <h1>Create user</h1>
   <label for="id"> Id </label>
   <div>
-    <input type="number" name="id" required>
+    <input type="number" name="id" value="{{ data.0 }}" required>
   </div>
 
   <label for="firstName"> First name </label>
   <div>
-    <input type="text" name="firstName" required>
+    <input type="text" name="firstName" value="{{ data.1 }}" required>
   </div>
 
   <label for="lastName"> Last name </label>
   <div>
-    <input type="text" name="lastName" required>
+    <input type="text" name="lastName" value="{{ data.2 }}" required>
   </div>
 
   <label for="email"> Email </label>
   <div>
-    <input type="email" name="email" required>
+    <input type="email" name="email" value="{{ data.3 }}" required>
   </div>
 
   <label for="username"> Username </label>
   <div>
-    <input type="text" name="username" required>
+    <input type="text" name="username" value="{{ data.4 }}" required>
   </div>
 
   <label for="password"> Password </label>
@@ -51,10 +49,9 @@
   {% endif %}
 
   {% if option == "employee" %}
-  <h1>Create employee</h1>
   <label for="userId"> User id </label>
   <div>
-    <input type="number" name="userId" required>
+    <input type="number" name="userId" value="{{ data.0 }}" required>
   </div>
 
   <label for="status"> Status </label>
@@ -67,6 +64,6 @@
   </div>
   {% endif %}
 
-  <button>Submit</button>
+  <button id="submit">Submit</button>
 </form>
 {% endblock%}

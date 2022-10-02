@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Workbench{% endblock %}
+{% block title %}Create {{ option }}{% endblock %}
 
 {% block customCSS %}
-<link rel="stylesheet" href="../static/css/base.css">
-<link rel="stylesheet" href="../static/css/create.css">
+<link rel="stylesheet" href="../static/css/operations.css">
 {% endblock %}
 
 {% block main %}
+<h1>Create {{ option }}</h1>
 <form action="/create/{{ option }}" method="POST">
   {% if option == "user" %}
-  <h1>Create user</h1>
   <label for="firstName"> First name </label>
   <div>
     <input type="text" name="firstName" required>
@@ -45,7 +44,6 @@
   {% endif %}
 
   {% if option == "employee" %}
-  <h1>Create employee</h1>
   <label for="userId"> User id </label>
   <div>
     <input type="number" name="userId" required>
@@ -61,6 +59,6 @@
   </div>
   {% endif %}
 
-  <button>Submit</button>
+  <button id="submit">Submit</button>
 </form>
 {% endblock%}

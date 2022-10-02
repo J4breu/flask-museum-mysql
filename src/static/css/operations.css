@@ -1,0 +1,10 @@
+div { margin-bottom: 10px; }
+
+#submit {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 12px 5px;
+  border-radius: 6px;
+  font-family: inherit;
+  margin-top: 10px;
+}

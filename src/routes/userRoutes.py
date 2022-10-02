@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, request
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, login_required
 
 from ..entities.user import User
 from ..models.userModels import UserModels
@@ -18,12 +18,8 @@ def login():
 
     loggedUser = UserModels.login(user)
     if (loggedUser != None and loggedUser.password):
-<<<<<<< HEAD
-      return redirect("/home/client")
-=======
       login_user(loggedUser, remember=remember)
       return redirect("/home")
->>>>>>> main
     flash("Credentials don't match...")
   return render_template("login.html")
 
