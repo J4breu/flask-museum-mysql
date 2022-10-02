@@ -32,7 +32,7 @@ class UserModels():
         sql = """
           UPDATE user SET password = '{}'
           WHERE email = '{}'
-        """.format(user.password, user.email)
+        """.format(User.generateHash(user.password), user.email)
 
         if (field != None and User.checkHash(field[0], user.securityKey)):
           cursor.execute(sql)

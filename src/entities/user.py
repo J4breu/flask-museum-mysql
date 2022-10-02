@@ -1,3 +1,5 @@
+import string
+import secrets
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -11,6 +13,12 @@ class User(UserMixin):
     self.username = username
     self.password = password
     self.securityKey = securityKey
+
+  @classmethod
+  def generatePassword(self):
+    alphabet = string.ascii_letters + string.digits
+    password = ''.join(secrets.choice(alphabet) for i in range(6))
+    return password
 
   @classmethod
   def generateHash(self, password):
