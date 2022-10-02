@@ -9,11 +9,44 @@
   <title>{% block title %}{% endblock %} · Museum ABA</title>
   {% block customCSS %}
   {% endblock %}
+  <link rel="stylesheet" href="../static/css/layout.css">
 </head>
 
 <body>
+  <header>
+    <figure id="logoContainer">
+      <div><a href="/home" title="Home">
+        <img id="logo" src="../static/img/logo.png" alt="Museum logo">
+      </div></a>
+      <figcaption>
+        <h1 id="legend">{% block figcaption %}{% endblock %}</h1>
+      </figcaption>
+    </figure>
+  </header>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  
+  <div id="warningMessage">
+    <p>{{ message }}</p>
+  </div>
+  
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
   {% block body %}
   {% endblock %}
+
+  <footer>
+    <nav>
+      {% block footer %}{% endblock %}
+      <li><a class="link" href="#">Privacity</a></li>
+      <li><a class="link" href="#">Security</a></li>
+      <li><a class="link" href="#">Contact</a></li>
+    </nav>
+  </footer>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+#warningMessage,
 main { max-width: 670px; }
 
 #personalSection,
@@ -64,6 +65,7 @@ select {
 
 /* Media Queries */
 @media screen and (max-width: 670px) {
+  #warningMessage,
   main { max-width: 340px; }
 
   #personalSection,

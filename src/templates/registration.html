@@ -4,21 +4,11 @@
 
 {% block customCSS %}
 <link rel="stylesheet" href="../static/css/registration.css">
-<link rel="stylesheet" href="../static/css/form.css">
 {% endblock %}
 
-{% block body %}
-<header>
-  <figure id="logoContainer">
-    <div><a href="/home" title="Home">
-      <img id="logo" src="../static/img/logo.png" alt="Museum logo">
-    </div></a>
-    <figcaption>
-      <h1 id="legend"> Sign up to Museum ABA </h1>
-    </figcaption>
-  </figure>
-</header>
+{% block figcaption %}Sign up to Museum ABA{% endblock %}
 
+{% block body %}
 <main>
   <form action="/registration" method="POST">
     <section id="personalSection">
@@ -110,14 +100,6 @@
     <p> Already have an account? <a class="link" href="/login">Sign in</a>.</p>
   </aside>
 </main>
-
-<footer>
-  <nav>
-    <li><a class="link" href="#">Privacity</a></li>
-    <li><a class="link" href="#">Security</a></li>
-    <li><a class="link" href="#">Contact</a></li>
-  </nav>
-</footer>
 
 <script src="../static/js/registration.js"></script>
 {% endblock %}

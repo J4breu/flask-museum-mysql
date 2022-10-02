@@ -1,4 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, request
+from flask_login import login_user, logout_user, login_required, current_user
 
 from ..entities.user import User
 from ..models.userModels import UserModels
@@ -11,20 +12,22 @@ def login():
   if request.method == "POST":
     email = request.form["email"]
     password = request.form["password"]
+    remember = True if request.form.get("remember") else False
 
-    user = User(None,
-                None,
-                None, 
-                email, 
-                None, 
-                password,
-                None)
+    user = User(None, None, None, email, None, password, None)
 
     loggedUser = UserModels.login(user)
     if (loggedUser != None and loggedUser.password):
+      login_user(loggedUser, remember=remember)
       return redirect("/home")
     flash("Credentials don't match...")
   return render_template("login.html")
+
+@main.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect("/home")
 
 @main.route("/forgotPassword", methods=["GET", "POST"])
 def forgotPassword():
@@ -33,13 +36,7 @@ def forgotPassword():
     password = User.generatePassword()
     securityKey = (request.form["key1"] + request.form["key2"] + request.form["key3"])
 
-    user = User(None,
-                None,
-                None, 
-                email, 
-                None, 
-                password,
-                securityKey)
+    user = User(None, None, None, email, None, password, securityKey)
 
     loggedUser = UserModels.forgotPassword(user)
     if (loggedUser != None):
@@ -59,13 +56,11 @@ def registration():
     password = User.generatePassword()
     securityKey = (request.form["key1"] + request.form["key2"] + request.form["key3"])
 
-    user = User(None,
-                firstName,
-                lastName, 
-                email, 
-                username, 
-                password,
-                securityKey)
+    if (UserModels.search("email", email) or UserModels.search("username", username)):
+      flash("Duplicate credentials (email or username)")
+      return redirect("/registration")
+
+    user = User(None, firstName, lastName, email, username, password, securityKey)
 
     UserModels.registration(user)
     sendMessage(email, password)
