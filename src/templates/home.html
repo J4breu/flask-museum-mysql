@@ -10,8 +10,14 @@
   <h1>Welcome to Museum ABA</h1>
   <nav>
     <ul>
+      {% if not current_user.is_authenticated %}
       <li><a href="/login">Sign in</a></li>
       <li><a href="/registration">Sign up</a></li>
+      {% endif %}
+      {% if current_user.is_authenticated %}
+      <li><a href="/registration">Profile</a></li>
+      <li><a href="/logout">Logout</a></li>
+      {% endif %}
     </ul>
   </nav>
 </header>

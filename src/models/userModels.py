@@ -8,7 +8,7 @@ class UserModels():
     try:
       connection = getConnection()
 
-      with connection.cursor(buffered = False) as cursor:
+      with connection.cursor() as cursor:
         cursor.execute(sql)
         row = cursor.fetchone()
         if (row != None):
@@ -39,6 +39,22 @@ class UserModels():
           connection.commit()
           connection.close()
           return user
+        return None
+    
+    except Exception as ex:
+      raise Exception(ex)
+
+  @classmethod
+  def getById(self, id):
+    sql = "SELECT * FROM user WHERE id = '{}'".format(id)
+    try:
+      connection = getConnection()
+
+      with connection.cursor() as cursor:
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        if (row != None):
+          return User(row[0], row[1], row[2], row[3], row[4], None, None)
         return None
     
     except Exception as ex:

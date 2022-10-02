@@ -13,6 +13,9 @@
 {% block body %}
 <main>
   <form action="/login" method="POST">
+    
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
     <div class="areaContainer" id="emailContainer">
       <label for="email"> Email </label>
       <input type="email" name="email" class="inputField" id="email">
@@ -26,7 +29,7 @@
 
     <div class="areaContainer" id="checkContainer">
       <label for="check">
-        <input type="checkbox"id="check">
+        <input type="checkbox" name="remember" id="check">
         Remember me.
       </label>
     </div>

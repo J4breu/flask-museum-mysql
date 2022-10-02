@@ -30,6 +30,7 @@ body {
   text-align: center;
 }
 
+#warningMessage,
 main { margin: auto; }
 
 form, aside {
