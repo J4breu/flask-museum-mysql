@@ -27,3 +27,35 @@ class ClientModels():
 
     except Exception as ex:
       raise Exception(ex)
+
+  @classmethod
+  def edit(self, userId):
+    sql = f"SELECT * FROM client WHERE userId = {userId}"
+    try:
+      connection = getConnection()
+      with connection.cursor() as cursor:
+        cursor.execute(sql)
+        data = cursor.fetchall()
+      return data[0]
+
+    except Exception as ex:
+      raise Exception(ex)
+
+  @classmethod
+  def update(self, userId, data):
+    sql = """
+      UPDATE client
+      SET bibliography = '{}', birthDate = '{}', nationality = '{}', photography = '{}'
+      WHERE userId = {}
+    """.format(data.bibliography, data.birthDate, data.nationality, data.photography, userId)
+    try:
+      connection = getConnection()
+
+      with connection.cursor() as cursor:
+        cursor.execute(sql)
+        connection.commit()
+      connection.close()
+      return None
+
+    except Exception as ex:
+      raise Exception(ex)

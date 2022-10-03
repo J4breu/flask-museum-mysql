@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template
 from flask_login import LoginManager
 
 from .config import settings
-from .routes import visitorRoutes, userRoutes, employeeRoutes
+from .routes import visitorRoutes, userRoutes, employeeRoutes, clientRoutes
 
 def createApp():
   app = Flask(__name__)
@@ -27,6 +27,7 @@ def createApp():
   app.register_blueprint(visitorRoutes.main)
   app.register_blueprint(userRoutes.main)
   app.register_blueprint(employeeRoutes.main)
+  app.register_blueprint(clientRoutes.main)
   app.register_error_handler(401, status401)
   app.register_error_handler(404, pageNotFound)
 

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Edit {{ option }}{% endblock %}
+{% block title %}Profile {{ option }}{% endblock %}
 
 {% block customCSS %}
 <link rel="stylesheet" href="../static/css/operations.css">
@@ -8,12 +8,7 @@
 
 {% block main %}
 <h1>Profile</h1>
-<form action="/profile" method="POST" autocomplete="off" enctype="multipart/form-data">
-  <label for="userId"> User id </label>
-  <div>
-    <input type="number" name="userId" value="{{ data.0 }}" required>
-  </div>
-  
+<form action="/profile" method="POST" autocomplete="off" enctype="multipart/form-data">  
   <label for="bibliography"> Bibliography </label>
   <div>
     <input type="text" name="bibliography" value="{{ data.1 }}" required>
