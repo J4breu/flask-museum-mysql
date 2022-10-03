@@ -8,7 +8,7 @@
 
 {% block main %}
 <h1>Edit {{ option }}</h1>
-<form action="/edit/{{ option }}{{ data.0 }}" method="POST">
+<form action="/edit{{ option }}/{{ data.0 }}" method="POST" autocomplete="off" enctype="multipart/form-data">
   {% if option == "user" %}
   <label for="id"> Id </label>
   <div>
@@ -61,6 +61,42 @@
       <option value="master">Master</option>
       <option value="normal">Normal</option>
     </select>
+  </div>
+  {% endif %}
+
+  {% if option == "client" %}
+  <label for="userId"> User id </label>
+  <div>
+    <input type="number" name="userId" value="{{ data.0 }}" required>
+  </div>
+  
+  <label for="bibliography"> Bibliography </label>
+  <div>
+    <input type="text" name="bibliography" value="{{ data.1 }}" required>
+  </div>
+
+  <label for="birthDate"> Date of birth </label>
+  <div>
+    <input type="date" name="birthDate" value="{{ data.2 }}" required>
+  </div>
+
+  <label for="nationality"> Nationality (ISO 3) </label>
+  <div>
+    <input type="text" name="nationality" value="{{ data.3 }}" required>
+  </div>
+
+  <div>
+    <figure>
+        <img src="../static/img/upload/{{ data.4 }}" alt="currentPhoto" width="48">
+      <figcaption>
+        <p>Current photo.</p>
+      </figcaption>
+    </figure>
+  </div>
+
+  <label for="photography"> Photography </label>
+  <div>
+    <input type="file" name="photography" required>
   </div>
   {% endif %}
 

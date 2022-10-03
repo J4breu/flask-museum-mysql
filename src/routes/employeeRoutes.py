@@ -1,13 +1,15 @@
 from flask import Blueprint, flash, redirect, render_template, request
 from flask_login import login_required, current_user
 
+from ..utils.file import updateFile
 from ..entities.user import User
 from ..entities.employee import Employee
+from ..entities.client import Client
 from ..models.employeeModels import EmployeeModels
 
 main = Blueprint("employeeRoutes", __name__)
 
-@main.route("/create/<option>", methods=["GET", "POST"])
+@main.route("/create<option>", methods=["GET", "POST"])
 @login_required
 def create(option):
   if (current_user.status == None):
@@ -29,12 +31,22 @@ def create(option):
     if option == "employee":
       data = Employee(request.form["userId"], request.form["status"])
 
+    if option == "client":
+      image = updateFile(request.files["photography"])
+      data = Client(
+        request.form["userId"],
+        request.form["bibliography"],
+        request.form["birthDate"],
+        request.form["nationality"],
+        image
+      )
+
     EmployeeModels.create(option, data)
     flash(f"{option.capitalize()} successfully created.")  
     return redirect("/workbench")
   return render_template("create.html", option = option)
 
-@main.route("/delete/<option><id>")
+@main.route("/delete<option>/<id>")
 @login_required
 def delete(option, id):
   if (current_user.status == None):
@@ -44,7 +56,7 @@ def delete(option, id):
   flash(f"{option.capitalize()} {id} successfully deleted.")
   return redirect("/workbench")
 
-@main.route("/edit/<option><id>", methods=["GET", "POST"])
+@main.route("/edit<option>/<id>", methods=["GET", "POST"])
 @login_required
 def edit(option, id):
   if (current_user.status == None):
@@ -65,6 +77,16 @@ def edit(option, id):
     if option == "employee":
       data = Employee(request.form["userId"], request.form["status"])
 
+    if option == "client":
+      image = updateFile(request.files["photography"])
+      data = Client(
+        request.form["userId"],
+        request.form["bibliography"],
+        request.form["birthDate"],
+        request.form["nationality"],
+        image
+      )
+
     EmployeeModels.update(option, data, id)
     flash(f"{option.capitalize()} {id} successfully edited.")  
     return redirect("/workbench")
@@ -83,8 +105,10 @@ def workbench():
 
     if option == "user":
       legend = ["Id", "First name", "Last name", "Email", "Username", "Password", "Security key"]
-    else:
+    if option == "employee":
       legend = ["User id", "Status"]
+    if option == "client":
+      legend = ["User id", "Bibliography", "Date of birth", "Nationality", "Photography"]
 
     data = EmployeeModels.workbench(option)
     return render_template("workbench.html", option = option, data = data, legend = legend)

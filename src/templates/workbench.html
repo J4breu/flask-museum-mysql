@@ -23,6 +23,7 @@
       <option value="" disabled selected>(select one)</option>
       <option value="user">User</option>
       <option value="employee">Employee</option>
+      <option value="client">Client</option>
     </select>
   </form>
 
@@ -49,14 +50,14 @@
     <tbody>
       <tr>
         <td>
-          <a href="/create/{{ option }}">Create</a>
+          <a href="/create{{ option }}">Create</a>
         </td>
       </tr>
       {% for row in data %}
       <tr>
         <td>
-          <a href="/edit/{{ option }}{{ row.0 }}">Edit</a>
-          <a href="/delete/{{ option }}{{ row.0 }}">Delete</a>
+          <a href="/edit{{ option }}/{{ row.0 }}">Edit</a>
+          <a href="/delete{{ option }}/{{ row.0 }}">Delete</a>
         </td>
         {% for field in row %}
         <td>{{ field }}</td>

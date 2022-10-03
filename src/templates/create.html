@@ -8,7 +8,7 @@
 
 {% block main %}
 <h1>Create {{ option }}</h1>
-<form action="/create/{{ option }}" method="POST">
+<form action="/create{{ option }}" method="POST" autocomplete="off" enctype="multipart/form-data">
   {% if option == "user" %}
   <label for="firstName"> First name </label>
   <div>
@@ -56,6 +56,33 @@
       <option value="master">Master</option>
       <option value="normal">Normal</option>
     </select>
+  </div>
+  {% endif %}
+
+  {% if option == "client" %}
+  <label for="userId"> User id </label>
+  <div>
+    <input type="number" name="userId" required>
+  </div>
+  
+  <label for="bibliography"> Bibliography </label>
+  <div>
+    <input type="text" name="bibliography" required>
+  </div>
+
+  <label for="birthDate"> Date of birth </label>
+  <div>
+    <input type="date" name="birthDate" required>
+  </div>
+
+  <label for="nationality"> Nationality </label>
+  <div>
+    <input type="text" name="nationality" required>
+  </div>
+
+  <label for="photography"> Photography </label>
+  <div>
+    <input type="file" name="photography" required>
   </div>
   {% endif %}
 

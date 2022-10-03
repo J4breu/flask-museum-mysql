@@ -63,6 +63,8 @@ header button {
 
 #left { right: 135px; }
 
+button:hover { opacity: 0.9; }
+
 footer {
   background-color: #E5E5E5;
   height: 50px;

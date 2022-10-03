@@ -3,6 +3,8 @@ from flask_login import login_user, logout_user, login_required
 
 from ..entities.user import User
 from ..models.userModels import UserModels
+from ..models.clientModels import ClientModels
+from ..utils.password import generatePassword
 from ..utils.mail import sendMessage
 
 main = Blueprint("userRoutes", __name__)
@@ -35,7 +37,7 @@ def forgotPassword():
       None,
       request.form["email"],
       None,
-      User.generatePassword(),
+      generatePassword(6),
       (request.form["key1"] + request.form["key2"] + request.form["key3"])
     )
 
@@ -56,7 +58,7 @@ def registration():
       request.form["lastName"],
       request.form["email"],
       request.form["username"],
-      User.generatePassword(),
+      generatePassword(6),
       (request.form["key1"] + request.form["key2"] + request.form["key3"])
     )
 
@@ -65,6 +67,7 @@ def registration():
       return redirect("/registration")
 
     UserModels.registration(user)
+    ClientModels.new(user.email)
     sendMessage(user.email, user.password)
     flash("Please check your email...")
     return redirect("/login")

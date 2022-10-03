@@ -93,8 +93,7 @@ article button {
   width: 60%;
 }
 
-.photo:hover,
-button:hover { opacity: 0.9; }
+.photo:hover { opacity: 0.9; }
 
 #navigation {
   width: 100%;

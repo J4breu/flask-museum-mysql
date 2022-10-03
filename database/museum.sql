@@ -38,6 +38,24 @@ CREATE TABLE IF NOT EXISTS `museum`.`employee` (
     ON UPDATE CASCADE);
 
 
+-- -----------------------------------------------------
+-- Table `museum`.`client`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `museum`.`client` (
+  `userId` INT NOT NULL,
+  `bibliography` VARCHAR(255) NOT NULL,
+  `birthDate` DATE NOT NULL,
+  `nationality` VARCHAR(3) NOT NULL,
+  `photography` VARCHAR(25) NOT NULL,
+  PRIMARY KEY (`userId`),
+  INDEX `fk_client_user1_idx` (`userId` ASC),
+  CONSTRAINT `fk_client_user1`
+    FOREIGN KEY (`userId`)
+    REFERENCES `museum`.`user` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

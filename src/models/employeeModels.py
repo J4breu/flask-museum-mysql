@@ -1,3 +1,4 @@
+from decouple import config
 from ..utils.db import getConnection
 from ..entities.user import User
 from ..entities.employee import Employee
@@ -23,6 +24,12 @@ class EmployeeModels():
         INSERT INTO employee (userId, status)
         VALUES ({}, '{}')
       """.format(data.userId, data.status)
+
+    if option == "client":
+      sql = """
+        INSERT INTO client (userId, bibliography, birthDate, nationality, photography)
+        VALUES ({}, '{}', '{}', '{}', '{}')
+      """.format(data.userId, data.bibliography, data.birthDate, data.nationality, data.photography)
     try:
       connection = getConnection()
 
@@ -38,8 +45,8 @@ class EmployeeModels():
   @classmethod
   def delete(self, option, id):
     if option == "user":
-      sql = f"DELETE FROM {option} WHERE id = {id}"
-    if option == "employee":
+      sql = f"DELETE FROM user WHERE id = {id}"
+    if option == "employee" or option == "client":
       sql = f"DELETE FROM {option} WHERE userId = {id}"
     try:
       connection = getConnection()
@@ -55,8 +62,8 @@ class EmployeeModels():
   @classmethod
   def edit(self, option, id):
     if option == "user":
-      sql = f"SELECT * FROM {option} WHERE id = {id}"
-    if option == "employee":
+      sql = f"SELECT * FROM user WHERE id = {id}"
+    if option == "employee" or option == "client":
       sql = f"SELECT * FROM {option} WHERE userId = {id}"
     try:
       connection = getConnection()
@@ -111,6 +118,13 @@ class EmployeeModels():
         SET userId = {}, status = '{}'
         WHERE userId = {}
       """.format(data.userId, data.status, id)
+
+    if option == "client":
+      sql = """
+        UPDATE client
+        SET userId = {}, bibliography = '{}', birthDate = '{}', nationality = '{}', photography = '{}'
+        WHERE userId = {}
+      """.format(data.userId, data.bibliography, data.birthDate, data.nationality, data.photography, id)
     try:
       connection = getConnection()
 
@@ -132,6 +146,8 @@ class EmployeeModels():
         sql = "SELECT * FROM user"
       if option == "employee":
         sql = "SELECT * FROM employee"
+      if option == "client":
+        sql = "SELECT * FROM client"
 
       with connection.cursor() as cursor:
         cursor.execute(sql)

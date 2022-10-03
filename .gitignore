@@ -1,5 +1,8 @@
 venv/
 .env
 
+src/static/img/upload/*
+!example.png
+
 __pycache__/
 *.py[cod]
