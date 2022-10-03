@@ -56,6 +56,149 @@ CREATE TABLE IF NOT EXISTS `museum`.`client` (
     ON UPDATE CASCADE);
 
 
+-- -----------------------------------------------------
+-- Table `museum`.`artwork`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `museum`.`artwork` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `clientId` INT NOT NULL,
+  `title` VARCHAR(20) NOT NULL,
+  `image` VARCHAR(25) NOT NULL,
+  `price` FLOAT NOT NULL,
+  `createTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  INDEX `fk_artwork_client1_idx` (`clientId` ASC),
+  UNIQUE INDEX `title_UNIQUE` (`title` ASC),
+  CONSTRAINT `fk_artwork_client1`
+    FOREIGN KEY (`clientId`)
+    REFERENCES `museum`.`client` (`userId`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `museum`.`ceramic`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `museum`.`ceramic` (
+  `artworkId` INT NOT NULL,
+  `color` VARCHAR(45) NOT NULL,
+  `composition` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`artworkId`),
+  CONSTRAINT `fk_ceramic_artwork1`
+    FOREIGN KEY (`artworkId`)
+    REFERENCES `museum`.`artwork` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `museum`.`photography`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `museum`.`photography` (
+  `artworkId` INT NOT NULL,
+  `dimensions` VARCHAR(45) NOT NULL,
+  `resolution` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`artworkId`),
+  CONSTRAINT `fk_photography_artwork1`
+    FOREIGN KEY (`artworkId`)
+    REFERENCES `museum`.`artwork` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `museum`.`painting`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `museum`.`painting` (
+  `artworkId` INT NOT NULL,
+  `dimensions` VARCHAR(45) NOT NULL,
+  `gender` VARCHAR(45) NOT NULL,
+  `technique` VARCHAR(45) NOT NULL,
+  `stream` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`artworkId`),
+  CONSTRAINT `fk_painting_artwork1`
+    FOREIGN KEY (`artworkId`)
+    REFERENCES `museum`.`artwork` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `museum`.`goldsmith`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `museum`.`goldsmith` (
+  `artworkId` INT NOT NULL,
+  `materials` VARCHAR(45) NOT NULL,
+  `technique` VARCHAR(45) NOT NULL,
+  `appearance` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`artworkId`),
+  CONSTRAINT `fk_goldsmith_artwork1`
+    FOREIGN KEY (`artworkId`)
+    REFERENCES `museum`.`artwork` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `museum`.`sculpture`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `museum`.`sculpture` (
+  `artworkId` INT NOT NULL,
+  `description` VARCHAR(45) NOT NULL,
+  `materials` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`artworkId`),
+  CONSTRAINT `fk_sculpture_artwork1`
+    FOREIGN KEY (`artworkId`)
+    REFERENCES `museum`.`artwork` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `museum`.`bill`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `museum`.`bill` (
+  `artworkId` INT NOT NULL,
+  `clientId` INT NOT NULL,
+  `date` DATE NOT NULL,
+  `amount` VARCHAR(45) NOT NULL,
+  `createTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`artworkId`),
+  INDEX `fk_bill_client1_idx` (`clientId` ASC),
+  CONSTRAINT `fk_bill_artwork1`
+    FOREIGN KEY (`artworkId`)
+    REFERENCES `museum`.`artwork` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_bill_client1`
+    FOREIGN KEY (`clientId`)
+    REFERENCES `museum`.`client` (`userId`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+-- -----------------------------------------------------
+-- Table `museum`.`userHasClient`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `museum`.`userHasClient` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userId` INT NOT NULL,
+  `clientId` INT NOT NULL,
+  INDEX `fk_user_has_client_client1_idx` (`clientId` ASC),
+  INDEX `fk_user_has_client_user1_idx` (`userId` ASC),
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_user_has_client_user1`
+    FOREIGN KEY (`userId`)
+    REFERENCES `museum`.`user` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_user_has_client_client1`
+    FOREIGN KEY (`clientId`)
+    REFERENCES `museum`.`client` (`userId`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
